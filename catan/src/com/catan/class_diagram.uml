@@ -3,17 +3,51 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="77.0" y="24.0">com.catan.TypeCase</node>
-    <node x="560.0" y="244.0">com.catan.Plateau</node>
-    <node x="579.0" y="49.0">com.catan.Case</node>
+    <node x="897.0" y="269.0">com.catan.Relation</node>
+    <node x="341.0" y="0.0">com.catan.Ressources</node>
+    <node x="564.5" y="411.0">com.catan.Noeud</node>
+    <node x="0.0" y="371.0">com.catan.Developpement</node>
+    <node x="663.0" y="117.0">com.catan.Route</node>
+    <node x="0.0" y="0.0">com.catan.TypeCase</node>
+    <node x="556.0" y="617.0">com.catan.TypeNoeud</node>
+    <node x="367.0" y="215.0">com.catan.Plateau</node>
+    <node x="0.0" y="221.5">com.catan.Case</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="com.catan.Relation" target="com.catan.Route">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="com.catan.Plateau" target="com.catan.Case">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="com.catan.Plateau" target="com.catan.Noeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Relation" target="com.catan.Noeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Noeud" target="com.catan.Relation">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="com.catan.Case" target="com.catan.TypeCase">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Noeud" target="com.catan.TypeNoeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Case" target="com.catan.Noeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Route" target="com.catan.Noeud">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
