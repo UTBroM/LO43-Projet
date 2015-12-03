@@ -8,4 +8,8 @@ public class Plateau {
     private Voleur voleur;
     private ArrayList<Echange> echanges;
     private Des des;
+
+    public Plateau(){
+
+    }
 }

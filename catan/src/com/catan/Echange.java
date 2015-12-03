@@ -6,4 +6,23 @@ public class Echange {
     private Ressources pertes;
     private int quantitePertes;
     private Joueur joueur;
+
+    public Echange(){
+
+    }
+
+    public Echange creer(){
+
+        return null;
+    }
+
+    public boolean accepter(Joueur client){
+
+        return false;
+    }
+
+    public String toString(){
+
+        return null;
+    }
 }
