@@ -3,39 +3,21 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="897.0" y="269.0">com.catan.Relation</node>
-    <node x="341.0" y="0.0">com.catan.Ressources</node>
-    <node x="564.5" y="411.0">com.catan.Noeud</node>
-    <node x="0.0" y="371.0">com.catan.Developpement</node>
-    <node x="663.0" y="117.0">com.catan.Route</node>
-    <node x="0.0" y="0.0">com.catan.TypeCase</node>
-    <node x="556.0" y="617.0">com.catan.TypeNoeud</node>
-    <node x="367.0" y="215.0">com.catan.Plateau</node>
-    <node x="0.0" y="221.5">com.catan.Case</node>
+    <node x="586.3895030981487" y="743.4888641092894">com.catan.Relation</node>
+    <node x="1519.7579249765388" y="1132.6608788105518">com.catan.Ressources</node>
+    <node x="1244.8693381518135" y="1026.4598834466476">com.catan.StockRessource</node>
+    <node x="987.9617488251502" y="888.0127629386745">com.catan.Joueur</node>
+    <node x="0.0" y="1329.6608788105518">com.catan.Developpement</node>
+    <node x="850.6299918926708" y="587.8148209983309">com.catan.Noeud</node>
+    <node x="733.8143018878912" y="981.5323413214874">com.catan.Route</node>
+    <node x="0.0" y="62.369802473018126">com.catan.TypeCase</node>
+    <node x="1189.539692236231" y="483.63244066557746">com.catan.TypeNoeud</node>
+    <node x="888.0034146399572" y="0.0">com.catan.Plateau</node>
+    <node x="452.75237148854063" y="46.223690548274135">com.catan.Case</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.catan.Relation" target="com.catan.Route">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.catan.Plateau" target="com.catan.Case">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.catan.Plateau" target="com.catan.Noeud">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.catan.Relation" target="com.catan.Noeud">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.catan.Noeud" target="com.catan.Relation">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="com.catan.Case" target="com.catan.TypeCase">
+    <edge source="com.catan.Noeud" target="com.catan.Joueur">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -47,19 +29,55 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="com.catan.Relation" target="com.catan.Route">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Plateau" target="com.catan.Noeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Plateau" target="com.catan.Case">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Relation" target="com.catan.Noeud">
+      <point x="-11.083715355425426" y="0.0" />
+      <point x="0.0" y="-5.602446732900717" />
+    </edge>
+    <edge source="com.catan.Noeud" target="com.catan.Relation">
+      <point x="2.2555613526977396" y="4.462336045639802" />
+      <point x="2.2555613526977254" y="4.462336045639816" />
+    </edge>
+    <edge source="com.catan.Joueur" target="com.catan.StockRessource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.StockRessource" target="com.catan.Ressources">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Route" target="com.catan.Joueur">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Case" target="com.catan.TypeCase">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="com.catan.Route" target="com.catan.Noeud">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="600.0" y="372.5" />
+  <settings layout="Hierarchic Group" zoom="0.5123796423658872" x="863.0067114093961" y="597.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
-    <Category>Constructors</Category>
-    <Category>Methods</Category>
-    <Category>Properties</Category>
     <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
