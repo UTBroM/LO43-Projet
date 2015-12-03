@@ -3,20 +3,21 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="742.0" y="597.0">com.catan.Relation</node>
-    <node x="829.0" y="0.0">com.catan.Voleur</node>
-    <node x="414.0" y="384.0">com.catan.Joueur</node>
-    <node x="642.0" y="364.0">com.catan.Noeud</node>
-    <node x="548.0" y="558.0">com.catan.Route</node>
-    <node x="1090.0" y="104.0">com.catan.TypeCase</node>
-    <node x="897.0" y="428.0">com.catan.TypeNoeud</node>
-    <node x="852.0" y="196.0">com.catan.Case</node>
-    <node x="0.0" y="167.0">com.catan.Ressources</node>
-    <node x="180.0" y="389.0">com.catan.StockRessource</node>
-    <node x="250.0" y="112.0">com.catan.Echange</node>
-    <node x="172.0" y="788.0">com.catan.Developpement</node>
-    <node x="544.0" y="97.0">com.catan.Plateau</node>
-    <node x="274.0" y="605.0">com.catan.StockDev</node>
+    <node x="651.0" y="0.0">com.catan.Relation</node>
+    <node x="231.0" y="455.0">com.catan.Voleur</node>
+    <node x="830.0" y="337.0">com.catan.Joueur</node>
+    <node x="575.0" y="220.0">com.catan.Noeud</node>
+    <node x="826.0" y="121.0">com.catan.Route</node>
+    <node x="0.0" y="77.0">com.catan.TypeCase</node>
+    <node x="455.0" y="40.0">com.catan.TypeNoeud</node>
+    <node x="337.0" y="251.0">com.catan.Case</node>
+    <node x="408.0" y="742.0">com.catan.Des</node>
+    <node x="1041.0" y="688.0">com.catan.Ressources</node>
+    <node x="1000.0" y="482.0">com.catan.StockRessource</node>
+    <node x="747.0" y="603.0">com.catan.Echange</node>
+    <node x="1232.0" y="71.0">com.catan.Developpement</node>
+    <node x="419.0" y="469.0">com.catan.Plateau</node>
+    <node x="1020.0" y="216.0">com.catan.StockDev</node>
   </nodes>
   <notes />
   <edges>
@@ -37,6 +38,10 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="com.catan.Noeud" target="com.catan.TypeNoeud">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.catan.Plateau" target="com.catan.Des">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -65,12 +70,12 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="com.catan.Relation" target="com.catan.Noeud">
-      <point x="-4.701446648269126" y="1.7018811396449394" />
-      <point x="-4.701446648269112" y="1.7018811396449278" />
+      <point x="5.143597893164252" y="0.0" />
+      <point x="5.1435978931642445" y="0.0" />
     </edge>
     <edge source="com.catan.Noeud" target="com.catan.Relation">
-      <point x="5.31751221918131" y="0.0" />
-      <point x="5.317512219181339" y="0.0" />
+      <point x="-4.860411042866431" y="-1.173202665519483" />
+      <point x="-4.860411042866435" y="-1.1732026655195114" />
     </edge>
     <edge source="com.catan.Plateau" target="com.catan.Voleur">
       <point x="0.0" y="0.0" />
@@ -101,7 +106,7 @@
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.8856107660455484" x="657.4985388661603" y="375.6136762127412" />
+  <settings layout="Hierarchic Group" zoom="0.8415147265077139" x="703.0" y="420.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

@@ -7,4 +7,5 @@ public class Plateau {
     private ArrayList<Noeud> noeuds;
     private Voleur voleur;
     private ArrayList<Echange> echanges;
+    private Des des;
 }
