@@ -2,5 +2,5 @@ package com.catan;
 
 
 public enum TypeNoeud {
-    COLONIE, VILLE, VIDE
+    COLONIE, VILLE, VIDE;
 }
