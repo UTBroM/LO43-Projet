@@ -1,22 +1,15 @@
 package com.catan;
 
-public class StockDev {
+public class StockDev extends Stock{
     private Developpement type;
-    private int stock;
 
-    public StockDev(){
-
+    public StockDev(Developpement type){
+        super();
+        this.type = type;
     }
 
     public Developpement getType() {
         return type;
     }
 
-    public int getQuantite() {
-        return stock;
-    }
-
-    public void setStock(int quantite) {
-        this.stock = quantite;
-    }
 }
