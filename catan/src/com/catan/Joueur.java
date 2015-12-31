@@ -10,8 +10,19 @@ public class Joueur {
 
     public Joueur(String nom){
 
-        stockRes = null;
-        stockDev = null;
+        stockRes = new ArrayList<StockRessource>();
+        for (Ressources type:Ressources.values()
+             ) {
+            stockRes.add(new StockRessource(type));
+        }
+
+        stockDev = new ArrayList<StockDev>();
+        for (Developpement type:Developpement.values()
+                ) {
+            stockDev.add(new StockDev(type));
+        }
+        score = 0;
+        this.nom = nom;
     }
 
     public int getStocRes(Ressources type){
