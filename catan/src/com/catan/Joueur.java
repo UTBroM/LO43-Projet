@@ -1,6 +1,7 @@
 package com.catan;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Joueur {
     private String nom;
@@ -26,21 +27,48 @@ public class Joueur {
     }
 
     public int getStocRes(Ressources type){
-
-        return 0;
+        return stockRes.get(type.ordinal()).getStock();
     }
 
-    public void setStocRes(Ressources type){
+    public void setStockRes(Ressources type, int quantite){
+        stockRes.get(type.ordinal()).setStock(quantite);
+    }
+    
+    public boolean consommerRes(int plutonium, int metal, int pierre, int laine, int cheeseburger){
+        if(this.getStocRes(Ressources.PLUTONIUM)>=plutonium &&
+                this.getStocRes(Ressources.METAL)>=metal &&
+                this.getStocRes(Ressources.PIERRE)>=pierre &&
+                this.getStocRes(Ressources.LAINE)>=laine &&
+                this.getStocRes(Ressources.CHEESEBURGER)>=cheeseburger){
 
+            this.stockRes.get(0).remove(plutonium);
+            this.stockRes.get(1).remove(metal);
+            this.stockRes.get(2).remove(pierre);
+            this.stockRes.get(3).remove(laine);
+            this.stockRes.get(4).remove(cheeseburger);
+
+            return true;
+
+        }
+        else{
+            return false;
+        }
     }
 
-    public int getStocDev(Developpement type){
-
-        return 0;
+    public int getStockDev(Developpement type){
+        return stockDev.get(type.ordinal()).getStock();
     }
 
-    public void setStocDev(Developpement type){
+    public boolean useDev(Developpement type){
+        return stockDev.get(type.ordinal()).remove(1);
+    }
 
+    public void createDev(){
+        if(this.consommerRes(0,0,1,1,1)) {
+            Random aleaNum = new Random();
+            Developpement type = Developpement.values()[aleaNum.nextInt(3)];
+            stockDev.get(type.ordinal()).add(1);
+        }
     }
 
     public int getScore() {
