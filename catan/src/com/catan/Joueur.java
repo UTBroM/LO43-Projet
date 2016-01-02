@@ -78,4 +78,16 @@ public class Joueur {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public Route creerRoute(Noeud a, Noeud b){
+        //Vérifier si la routre est construisible (reliée à une route, une colonie ou une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route)
+        if(this.consommerRes(1,1,0,0,0)){
+            return new Route(a,b,this);
+        }
+        else{
+            return null;
+        }
+    }
+
+
 }
