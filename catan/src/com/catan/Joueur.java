@@ -80,7 +80,9 @@ public class Joueur {
     }
 
     public Route creerRoute(Noeud a, Noeud b){
-        //Vérifier si la routre est construisible (reliée à une route, une colonie ou une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route)
+        //Vérifier si la routre est construisible (reliée à une route, une colonie ou
+        //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route)
+        //À compléter avec la classe Noeud qui pourrais checker tout ça
         if(this.consommerRes(1,1,0,0,0)){
             return new Route(a,b,this);
         }
