@@ -91,5 +91,9 @@ public class Joueur {
         }
     }
 
+    public boolean creerColonie(Noeud a){
+        //A compléter
+        return this.consommerRes(1,1,0,1,1);
+    }
 
 }
