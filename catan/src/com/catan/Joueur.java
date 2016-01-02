@@ -93,7 +93,26 @@ public class Joueur {
 
     public boolean creerColonie(Noeud a){
         //A compléter
-        return this.consommerRes(1,1,0,1,1);
+        //Une colonie ne peut être construite sur un croisement que si les trois croisements adjacents ne sont pas occupés par des colonies ou villes
+        //La colonie doit être reliée à une route de même couleur
+        if(this.consommerRes(1,1,0,1,1)) {
+            this.score += 1;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean creerVille(Noeud a){
+        //Seules les colonies peuvent être transformées en ville
+        if(this.consommerRes(0,0,3,0,2)) {
+            this.score += 1;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
