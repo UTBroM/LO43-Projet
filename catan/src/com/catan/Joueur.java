@@ -63,7 +63,7 @@ public class Joueur {
         return stockDev.get(type.ordinal()).remove(1);
     }
 
-    public void createDev(){
+    public void creerDev(){
         if(this.consommerRes(0,0,1,1,1)) {
             Random aleaNum = new Random();
             Developpement type = Developpement.values()[aleaNum.nextInt(3)];
