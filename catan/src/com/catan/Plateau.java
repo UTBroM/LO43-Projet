@@ -45,19 +45,19 @@ public class Plateau {
             if(i>=0 && i<4){
                 cases.add(new Case(TypeCase.REACTEUR_NUCLEAIRE));
             }
-            if(i>=4 && i<8){
+            if(i>=4 && i<7){
                 cases.add(new Case(TypeCase.MONTAGNE));
             }
-            if(i>=8 && i<12){
+            if(i>=7 && i<11){
                 cases.add(new Case(TypeCase.ELEVAGE));
             }
-            if(i>=12 && i<16){
+            if(i>=11 && i<15){
                 cases.add(new Case(TypeCase.FAST_FOOD));
             }
-            if(i>=16 && i<19){
+            if(i>=15 && i<18){
                 cases.add(new Case(TypeCase.MINE));
             }
-            if(i==19){
+            if(i==18){
                 cases.add(new Case(TypeCase.DESERT));
             }
         }
@@ -142,10 +142,55 @@ public class Plateau {
             }
         }
 
-        //On calcule les voisins de chaque case
+        //TODO : On calcule les voisins de chaque case
+        for (int i = 0; i < 19; i++) {
 
+            if(i>=0 && i<3){
+                cases.get(i).ajouterNoeud(noeuds.get(i));
+                cases.get(i).ajouterNoeud(noeuds.get(i+3));
+                cases.get(i).ajouterNoeud(noeuds.get(i+4));
+                cases.get(i).ajouterNoeud(noeuds.get(i+7));
+                cases.get(i).ajouterNoeud(noeuds.get(i+8));
+                cases.get(i).ajouterNoeud(noeuds.get(i+12));
+            }
+
+            else if(i>=3 && i<7){
+                cases.get(i).ajouterNoeud(noeuds.get(i+4));
+                cases.get(i).ajouterNoeud(noeuds.get(i+8));
+                cases.get(i).ajouterNoeud(noeuds.get(i+9));
+                cases.get(i).ajouterNoeud(noeuds.get(i+13));
+                cases.get(i).ajouterNoeud(noeuds.get(i+14));
+                cases.get(i).ajouterNoeud(noeuds.get(i+19));
+            }
+
+            else if(i>=7 && i<12){
+                cases.get(i).ajouterNoeud(noeuds.get(i+9));
+                cases.get(i).ajouterNoeud(noeuds.get(i+14));
+                cases.get(i).ajouterNoeud(noeuds.get(i+15));
+                cases.get(i).ajouterNoeud(noeuds.get(i+20));
+                cases.get(i).ajouterNoeud(noeuds.get(i+21));
+                cases.get(i).ajouterNoeud(noeuds.get(i+26));
+            }
+
+            else if(i>=12 && i<16){
+                cases.get(i).ajouterNoeud(noeuds.get(i+16));
+                cases.get(i).ajouterNoeud(noeuds.get(i+21));
+                cases.get(i).ajouterNoeud(noeuds.get(i+22));
+                cases.get(i).ajouterNoeud(noeuds.get(i+26));
+                cases.get(i).ajouterNoeud(noeuds.get(i+27));
+                cases.get(i).ajouterNoeud(noeuds.get(i+31));
+            }
+            else if(i>=16 && i<19){
+                cases.get(i).ajouterNoeud(noeuds.get(i+23));
+                cases.get(i).ajouterNoeud(noeuds.get(i+27));
+                cases.get(i).ajouterNoeud(noeuds.get(i+28));
+                cases.get(i).ajouterNoeud(noeuds.get(i+31));
+                cases.get(i).ajouterNoeud(noeuds.get(i+32));
+                cases.get(i).ajouterNoeud(noeuds.get(i+35));
+            }
+        }
 
         System.out.println("Généré !");
-
     }
+
 }
