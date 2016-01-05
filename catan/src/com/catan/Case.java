@@ -7,10 +7,9 @@ public class Case {
     private ArrayList<Noeud> noeuds;
     private int numero;
 
-    public Case(TypeCase type, ArrayList<Noeud> noeuds, int numero) {
+    public Case(TypeCase type) {
         this.type = type;
-        this.noeuds = noeuds;
-        this.numero = numero;
+        this.noeuds = new ArrayList<>();
     }
 
     public TypeCase getType() {
@@ -21,7 +20,13 @@ public class Case {
         return numero;
     }
 
+    public void setNumero(int numero) { this.numero = numero; }
+
     public ArrayList<Noeud> getNoeuds() {
         return noeuds;
+    }
+
+    public void ajouterNoeud(Noeud nouveau){
+        noeuds.add(nouveau);
     }
 }
