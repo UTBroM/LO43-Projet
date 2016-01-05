@@ -7,13 +7,12 @@ public class Echange {
     private int quantitePertes;
     private Joueur joueur;
 
-    public Echange(){
-
-    }
-
-    public Echange creer(){
-
-        return null;
+    public Echange(Ressources gains, int quantiteGains, Ressources pertes, int quantitePertes, Joueur joueur) {
+        this.gains = gains;
+        this.quantiteGains = quantiteGains;
+        this.pertes = pertes;
+        this.quantitePertes = quantitePertes;
+        this.joueur = joueur;
     }
 
     public boolean accepter(Joueur client){
