@@ -8,10 +8,24 @@ public class Noeud {
     private final ArrayList<Noeud> voisins;
     private Joueur joueur;
 
-    public Noeud(TypeNoeud type){
-        this.type = type;
+    public Noeud(){
+        this.type = TypeNoeud.VIDE;
         routes = new ArrayList<Route>();
         voisins = new ArrayList<Noeud>();
         joueur = null;
     }
+
+    public void changerType(TypeNoeud type){
+        this.type = type;
+    }
+
+    public boolean ajouterRoute(Route route){
+
+        return false;
+    }
+
+    public void ajouterVoisin(Noeud voisin){
+        voisins.add(voisin);
+    }
+
 }
