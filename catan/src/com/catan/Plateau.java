@@ -13,7 +13,8 @@ public class Plateau {
     public Plateau(){
         joueurs = new ArrayList<Joueur>();
         joueurs.add(new Joueur("test"));
-        System.out.println(joueurs.get(0).getStocRes(Ressources.METAL));
+        joueurs.get(0).setStockRes(Ressources.METAL, 10);
+        System.out.println("Ressources de metal : " + joueurs.get(0).getStocRes(Ressources.METAL));
         joueurs.get(0).creerDev();
         joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
         joueurs.get(0).setStockRes(Ressources.LAINE, 10);
