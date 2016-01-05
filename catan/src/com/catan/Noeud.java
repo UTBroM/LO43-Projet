@@ -10,7 +10,8 @@ public class Noeud {
 
     public Noeud(TypeNoeud type){
         this.type = type;
-        voisins = null;
+        routes = new ArrayList<Route>();
+        voisins = new ArrayList<Noeud>();
         joueur = null;
     }
 }
