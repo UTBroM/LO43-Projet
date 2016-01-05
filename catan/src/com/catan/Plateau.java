@@ -11,7 +11,13 @@ public class Plateau {
     private Des des;
 
     public Plateau(){
-        joueurs = new ArrayList<Joueur>();
+
+        joueurs = new ArrayList<>();
+        cases = new ArrayList<>();
+        noeuds = new ArrayList<>();
+        voleur = new Voleur();
+        echanges = new ArrayList<>();
+        des = new Des();
         joueurs.add(new Joueur("test"));
         joueurs.get(0).setStockRes(Ressources.METAL, 10);
         System.out.println("Ressources de metal : " + joueurs.get(0).getStocRes(Ressources.METAL));
