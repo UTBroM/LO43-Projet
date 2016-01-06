@@ -2,7 +2,6 @@ package com.catan;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class Plateau {
     private ArrayList<Joueur> joueurs;
@@ -26,12 +25,29 @@ public class Plateau {
 
         joueurs.add(new Joueur("test"));
         joueurs.get(0).setStockRes(Ressources.METAL, 10);
-        System.out.println("Ressources de metal : " + joueurs.get(0).getStocRes(Ressources.METAL));
+        System.out.println("Ressources de metal : " + joueurs.get(0).getStockRes(Ressources.METAL));
         joueurs.get(0).creerDev();
         joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
         joueurs.get(0).setStockRes(Ressources.LAINE, 10);
         joueurs.get(0).setStockRes(Ressources.PIERRE, 10);
         joueurs.get(0).creerDev();
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Lance les dés : " + des.lancer());
+        }
+
+
+        joueurs.add(new Joueur("test2"));
+        joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
+
+        echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 2, joueurs.get(0)));
+
+        System.out.println(echanges.get(0).toString());
+
+        echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
+
+        System.out.println(echanges.get(1).toString());
+
 
     }
 

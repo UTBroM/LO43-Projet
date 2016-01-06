@@ -26,7 +26,7 @@ public class Joueur {
         this.nom = nom;
     }
 
-    public int getStocRes(Ressources type){
+    public int getStockRes(Ressources type){
         return stockRes.get(type.ordinal()).getStock();
     }
 
@@ -35,11 +35,11 @@ public class Joueur {
     }
     
     public boolean consommerRes(int plutonium, int metal, int pierre, int laine, int cheeseburger){
-        if(this.getStocRes(Ressources.PLUTONIUM)>=plutonium &&
-                this.getStocRes(Ressources.METAL)>=metal &&
-                this.getStocRes(Ressources.PIERRE)>=pierre &&
-                this.getStocRes(Ressources.LAINE)>=laine &&
-                this.getStocRes(Ressources.CHEESEBURGER)>=cheeseburger){
+        if(this.getStockRes(Ressources.PLUTONIUM)>=plutonium &&
+                this.getStockRes(Ressources.METAL)>=metal &&
+                this.getStockRes(Ressources.PIERRE)>=pierre &&
+                this.getStockRes(Ressources.LAINE)>=laine &&
+                this.getStockRes(Ressources.CHEESEBURGER)>=cheeseburger){
 
             this.stockRes.get(0).remove(plutonium);
             this.stockRes.get(1).remove(metal);
@@ -53,6 +53,21 @@ public class Joueur {
         else{
             return false;
         }
+    }
+
+    public boolean consommerUneRes(Ressources type, int quantite){
+        if(this.getStockRes(type)>=quantite){
+            this.stockRes.get(type.ordinal()).remove(quantite);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void ajouterUneRes(Ressources type, int quantite){
+        this.stockRes.get(type.ordinal()).add(quantite);
+
     }
 
     public int getStockDev(Developpement type){
@@ -77,6 +92,10 @@ public class Joueur {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public Route creerRoute(Noeud a, Noeud b){
