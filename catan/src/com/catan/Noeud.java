@@ -19,6 +19,14 @@ public class Noeud {
         this.type = type;
     }
 
+    public TypeNoeud getType() {
+        return type;
+    }
+
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
     public boolean ajouterRoute(Route route){
 
         return false;

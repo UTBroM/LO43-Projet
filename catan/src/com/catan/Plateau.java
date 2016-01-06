@@ -219,6 +219,22 @@ public class Plateau {
 
         System.out.println("Généré !");
     }
-    
+
+    public void debutTour(){
+        for (Case curcase:cases
+             ) {
+            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition())
+            for (Noeud curnoeud:curcase.getNoeuds()
+                 ) {
+                if(curnoeud.getType() == TypeNoeud.COLONIE){
+                    //On attribue 1 ressource de la case au joueur
+                    curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1); //Fait le parallele entre l'enum Ressource et TypeCase
+                }
+                if(curnoeud.getType() == TypeNoeud.VILLE){
+                    curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1);
+                }
+            }
+        }
+    }
 
 }
