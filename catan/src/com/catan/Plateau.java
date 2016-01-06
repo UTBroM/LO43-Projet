@@ -38,15 +38,19 @@ public class Plateau {
 
 
         joueurs.add(new Joueur("test2"));
-        joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
+        joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
 
-        echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 2, joueurs.get(0)));
+        echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
 
         System.out.println(echanges.get(0).toString());
+
+        System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
 
         echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
 
         System.out.println(echanges.get(1).toString());
+
+        System.out.println("Accepter : " + echanges.get(1).accepter(joueurs.get(1))); //false car pas asser de metal
 
 
     }
