@@ -221,9 +221,12 @@ public class Plateau {
     }
 
     public void debutTour(){
+
+        final int lancer = des.lancer(); //On lance les dés
+
         for (Case curcase:cases
              ) {
-            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition())
+            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition() && curcase.getNumero() == lancer)
             for (Noeud curnoeud:curcase.getNoeuds()
                  ) {
                 if(curnoeud.getType() == TypeNoeud.COLONIE){
