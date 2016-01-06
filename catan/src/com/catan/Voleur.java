@@ -3,8 +3,8 @@ package com.catan;
 public class Voleur {
     private Case position;
 
-    public Voleur(){
-
+    public Voleur(Case position) {
+        this.position = position;
     }
 
     public Case getPosition() {

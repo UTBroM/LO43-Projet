@@ -16,11 +16,18 @@ public class Plateau {
         joueurs = new ArrayList<>();
         cases = new ArrayList<>();
         noeuds = new ArrayList<>();
-        voleur = new Voleur();
         echanges = new ArrayList<>();
         des = new Des();
 
         this.generer();
+
+        //Le voleur est placé sur la case désert
+        for (Case curcase:cases
+             ) {
+            if(curcase.getType() == TypeCase.DESERT){
+                voleur = new Voleur(curcase);
+            }
+        }
 
 
         joueurs.add(new Joueur("test"));
@@ -212,5 +219,6 @@ public class Plateau {
 
         System.out.println("Généré !");
     }
+    
 
 }
