@@ -53,16 +53,10 @@ public class Plateau {
 
         try {
             echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
-        }
-        catch (PasAssezDeRessourcesException e){
-            System.out.println("Erreure " + e);
-        }
-
-        try {
             echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
         }
         catch (PasAssezDeRessourcesException e){
-            System.out.println("Erreure " + e);
+            System.out.println("Erreur " + e);
         }
 
         System.out.println(afficherOffres());
