@@ -14,13 +14,13 @@ public class Joueur {
         stockRes = new ArrayList<>();
         for (Ressources type:Ressources.values()
              ) {
-            stockRes.add(new Stock<Ressources>(type));
+            stockRes.add(new Stock<>(type));
         }
 
         stockDev = new ArrayList<>();
         for (Developpement type:Developpement.values()
                 ) {
-            stockDev.add(new Stock<Developpement>(type));
+            stockDev.add(new Stock<>(type));
         }
         score = 0;
         this.nom = nom;
