@@ -1,7 +1,10 @@
 package com.catan;
 
-/**
- * Created by paul on 07/01/16.
- */
-public class PasAssezDeRessourcesException {
+public class PasAssezDeRessourcesException extends Exception{
+    public PasAssezDeRessourcesException() {
+    }
+
+    public PasAssezDeRessourcesException(String message) {
+        super(message);
+    }
 }

@@ -51,18 +51,31 @@ public class Plateau {
         joueurs.add(new Joueur("test2"));
         joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
 
-        echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
+        try {
+            echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
+        }
+        catch (PasAssezDeRessourcesException e){
+            System.out.println("Erreure " + e);
+        }
 
-        System.out.println(echanges.get(0));
+        try {
+            echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
+        }
+        catch (PasAssezDeRessourcesException e){
+            System.out.println("Erreure " + e);
+        }
+
+        System.out.println(afficherOffres());
 
         System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
+        echanges.remove(0);
 
-        echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
+        System.out.println(afficherOffres());
 
-        System.out.println(echanges.get(1));
 
-        System.out.println("Accepter : " + echanges.get(1).accepter(joueurs.get(1))); //false car pas asser de metal
-
+        //Ne fonctionne plus car grace à l'exception on ne crée pas l'objet erroné
+        //System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //false car pas asser de metal
+        //echanges.remove(0);
 
 
         //Crée une colonie sur le noeud 23 et l'attribue au joueur 0
@@ -273,6 +286,16 @@ public class Plateau {
                 }
             }
         }
+    }
+
+    public String afficherOffres(){
+        String out = "";
+        for (Echange echange:echanges
+             ) {
+            out = out + echange + "\n";
+        }
+
+        return out;
     }
 
 }

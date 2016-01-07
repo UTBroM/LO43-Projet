@@ -7,13 +7,18 @@ public class Echange {
     private int quantitePertes; //gains de clients
     private Joueur joueur;
 
-    public Echange(Ressources gains, int quantiteGains, Ressources pertes, int quantitePertes, Joueur joueur) {
-        //TODO : ne pas créer l'objet si joueur ne possède pas asser de ressources
-        this.gains = gains;
-        this.quantiteGains = quantiteGains;
-        this.pertes = pertes;
-        this.quantitePertes = quantitePertes;
-        this.joueur = joueur;
+    public Echange(Ressources gains, int quantiteGains, Ressources pertes, int quantitePertes, Joueur joueur) throws PasAssezDeRessourcesException{
+        if (joueur.getStockRes(pertes) >= quantitePertes){
+            this.gains = gains;
+            this.quantiteGains = quantiteGains;
+            this.pertes = pertes;
+            this.quantitePertes = quantitePertes;
+            this.joueur = joueur;
+        }
+        else{
+            throw new PasAssezDeRessourcesException();
+        }
+
     }
 
     public boolean accepter(Joueur client){
