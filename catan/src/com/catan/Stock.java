@@ -1,6 +1,7 @@
 package com.catan;
 
 public class Stock {
+    //TODO : utilisation de generics pour avoir une seule classe de stock
     private int stock;
 
     public Stock(){
