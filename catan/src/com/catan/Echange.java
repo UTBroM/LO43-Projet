@@ -21,9 +21,8 @@ public class Echange {
 
     }
 
-    public boolean accepter(Joueur client){
+    public void accepter(Joueur client) throws PasAssezDeRessourcesException{
         //On vérifie si l'offre est toujours valable
-        //TODO : Normalement il faudrais vérifier à chaques transferts si les offres restent valables (méthode de nettoyage ?)
         if(joueur.getStockRes(pertes)>= quantitePertes){
             //On vérifie l'autre joueur
             if(client.getStockRes(gains)>= quantiteGains){
@@ -36,14 +35,13 @@ public class Echange {
                 client.consommerUneRes(gains, quantiteGains);
                 joueur.ajouterUneRes(gains, quantiteGains);
 
-                return true;
             }
             else{
-                return false;
+                throw new PasAssezDeRessourcesException();
             }
         }
         else{
-            return false;
+            throw new PasAssezDeRessourcesException();
         }
     }
 

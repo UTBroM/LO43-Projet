@@ -98,18 +98,18 @@ public class Joueur {
         return nom;
     }
 
-    public Route creerRoute(Noeud a, Noeud b){
-        //Vérifier si la routre est construisible (reliée à une route, une colonie ou
-        //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route)
-        //À compléter avec la classe Noeud qui pourrais checker tout ça
-        //TODO : utiliser les exception pour ne pas créer de route si problème
-
+    public Route creerRoute(Noeud a, Noeud b) throws RouteNonValide{
         if((a.connectable(this, b) || b.connectable(this, a)) && this.consommerRes(1,1,0,0,0)){
-            return new Route(a,b,this);
+            try {
+                return new Route(a,b,this);
+            } catch (RouteNonValide routeNonValide) {
+                routeNonValide.printStackTrace();
+            }
         }
         else{
-            return null;
+            throw new RouteNonValide();
         }
+        return null;
 
     }
 

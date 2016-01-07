@@ -194,7 +194,6 @@ public class Plateau {
     private void debutTour(){
 
         final int lancer = des.lancer(); //On lance les dés
-        //TODO : activer Biff si on tire un sept
         for (Case curcase:cases
              ) {
             if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition() && curcase.getNumero() == lancer) {
@@ -263,7 +262,12 @@ public class Plateau {
 
         System.out.println(afficherOffres());
 
-        System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
+        try {
+            echanges.get(0).accepter(joueurs.get(1)); //Fonctionne car tout le monde à asser
+            System.out.println("Echange OK");
+        } catch (PasAssezDeRessourcesException e) {
+            System.out.println("Erreur " + e);
+        }
         echanges.remove(0);
 
         System.out.println(afficherOffres());
@@ -274,7 +278,11 @@ public class Plateau {
         noeuds.get(23).setJoueur(joueurs.get(0));
 
         //Crée une route entre le noeud 23 et 29 et l'attribue au joueur 0
-        routes.add(new Route(noeuds.get(23), noeuds.get(29), joueurs.get(0)));
+        try {
+            routes.add(new Route(noeuds.get(23), noeuds.get(29), joueurs.get(0)));
+        } catch (RouteNonValide routeNonValide) {
+            System.out.println("Erreur " + routeNonValide);
+        }
 
 
         //Simule 30 tours pour voir si les ressources fonctionnent
@@ -287,7 +295,11 @@ public class Plateau {
         //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route
         //Ceci est fait par la methode connectable de Noeud
 
-        routes.add(joueurs.get(0).creerRoute(noeuds.get(29), noeuds.get(34)));
+        try {
+            routes.add(joueurs.get(0).creerRoute(noeuds.get(29), noeuds.get(34)));
+        } catch (RouteNonValide routeNonValide) {
+            System.out.println("Erreur " + routeNonValide); //Cette erreur va apparaitre aléatoirement suivant la disposition du plateau et donc des ressources qu'aura généré le joueur.
+        }
 
 
         //De la même manière on construit une colonie au bout de cette route

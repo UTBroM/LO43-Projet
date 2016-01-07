@@ -6,9 +6,8 @@ public class Route {
     private Noeud b;
     private Joueur joueur;
 
-    public Route(Noeud a, Noeud b, Joueur joueur) {
+    public Route(Noeud a, Noeud b, Joueur joueur) throws RouteNonValide{
         //Vérifie si les deux points sont voisins
-        //TODO : lancer une exception si ça échoue
         if(a.estVoisin(b)){
             this.a = a;
             this.b = b;
@@ -16,6 +15,9 @@ public class Route {
 
             a.ajouterRoute(this);
             b.ajouterRoute(this);
+        }
+        else {
+            throw new RouteNonValide();
         }
 
     }
