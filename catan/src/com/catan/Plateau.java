@@ -234,7 +234,9 @@ public class Plateau {
 
     public void partieTest(){
         //Tests d'attributions et dépenses de ressources
-        joueurs.add(new Joueur("test"));
+        joueurs.add(new Joueur("Paul"));
+        joueurs.add(new Joueur("SomeGuy"));
+        joueurs.add(new Joueur("NyanCat"));
         joueurs.get(0).setStockRes(Ressources.METAL, 10);
         System.out.println("Ressources de metal : " + joueurs.get(0).getStockRes(Ressources.METAL));
         joueurs.get(0).creerDev(); //Ne crée rien car pas assez de ressources
@@ -249,7 +251,6 @@ public class Plateau {
 
 
         //Simulations d'échanges
-        joueurs.add(new Joueur("test2"));
         joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
 
         try {
@@ -263,12 +264,22 @@ public class Plateau {
         System.out.println(afficherOffres());
 
         try {
-            echanges.get(0).accepter(joueurs.get(1)); //Fonctionne car tout le monde à asser
+            echanges.get(0).accepter(joueurs.get(2)); //Ne fonctionne pas car NyanCat n'a pas de ressources
+            echanges.remove(0);
             System.out.println("Echange OK");
         } catch (PasAssezDeRessourcesException e) {
             System.out.println("Erreur " + e);
         }
-        echanges.remove(0);
+
+        try {
+            echanges.get(0).accepter(joueurs.get(1)); //Fonctionne car tout le monde à asser
+            echanges.remove(0);
+            System.out.println("Echange OK");
+        } catch (PasAssezDeRessourcesException e) {
+            System.out.println("Erreur " + e);
+        }
+
+
 
         System.out.println(afficherOffres());
 
@@ -303,10 +314,21 @@ public class Plateau {
 
 
         //De la même manière on construit une colonie au bout de cette route
-        joueurs.get(0).creerColonie(noeuds.get(34));
+        try {
+            joueurs.get(0).creerColonie(noeuds.get(34));
+        } catch (ConstructionBatimentException e) {
+            System.out.println("Erreur " + e);
+        } catch (PasAssezDeRessourcesException e) {
+            System.out.println("Erreur " + e);
+        }
 
-        joueurs.get(0).creerVille(noeuds.get(34));
-
+        try {
+            joueurs.get(0).creerVille(noeuds.get(34));
+        } catch (ConstructionBatimentException e) {
+            System.out.println("Erreur " + e);
+        } catch (PasAssezDeRessourcesException e) {
+            System.out.println("Erreur " + e);
+        }
 
 
         System.out.println("terminé");

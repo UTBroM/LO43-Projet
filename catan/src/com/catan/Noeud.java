@@ -27,14 +27,13 @@ public class Noeud {
         return joueur;
     }
 
-    public boolean ajouterRoute(Route route){
+    public void ajouterRoute(Route route) throws RouteNonValide{
 
         if(route.getNoeuds()[0] == this || route.getNoeuds()[1] == this){
             routes.add(route);
-            return true;
         }
         else {
-            return false;
+            throw new RouteNonValide("Cette route n'est pas connectée à ce point");
         }
     }
 

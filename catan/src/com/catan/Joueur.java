@@ -41,11 +41,16 @@ public class Joueur {
                 this.getStockRes(Ressources.LAINE)>=laine &&
                 this.getStockRes(Ressources.CHEESEBURGER)>=cheeseburger){
 
-            this.consommerUneRes(Ressources.PLUTONIUM, plutonium);
-            this.consommerUneRes(Ressources.METAL, metal);
-            this.consommerUneRes(Ressources.PIERRE, pierre);
-            this.consommerUneRes(Ressources.LAINE, laine);
-            this.consommerUneRes(Ressources.CHEESEBURGER, cheeseburger);
+            try {
+                this.consommerUneRes(Ressources.PLUTONIUM, plutonium);
+                this.consommerUneRes(Ressources.METAL, metal);
+                this.consommerUneRes(Ressources.PIERRE, pierre);
+                this.consommerUneRes(Ressources.LAINE, laine);
+                this.consommerUneRes(Ressources.CHEESEBURGER, cheeseburger);
+            } catch (PasAssezDeRessourcesException e) {
+                System.out.println("Erreur " + e);
+                return false;
+            }
 
             return true;
 
@@ -55,13 +60,12 @@ public class Joueur {
         }
     }
 
-    public boolean consommerUneRes(Ressources type, int quantite){
-        if(this.getStockRes(type)>=quantite){
+    public void consommerUneRes(Ressources type, int quantite) throws PasAssezDeRessourcesException{
+        try{
             this.stockRes.get(type.ordinal()).remove(quantite);
-            return true;
         }
-        else{
-            return false;
+        catch (PasAssezDeRessourcesException e){
+            throw new PasAssezDeRessourcesException(this.nom + " : " + e);
         }
     }
 
@@ -74,8 +78,12 @@ public class Joueur {
         return stockDev.get(type.ordinal()).getStock();
     }
 
-    public boolean useDev(Developpement type){
-        return stockDev.get(type.ordinal()).remove(1);
+    public boolean useDev(Developpement type) throws PasAssezDeRessourcesException{
+        try {
+            return stockDev.get(type.ordinal()).remove(1);
+        } catch (PasAssezDeRessourcesException e) {
+            throw e;
+        }
     }
 
     public void creerDev(){
@@ -107,35 +115,43 @@ public class Joueur {
             }
         }
         else{
-            throw new RouteNonValide();
+            throw new RouteNonValide("Il est interdit de placer une route ici ou "+ this.nom +" n'a pas assez de ressources");
         }
         return null;
 
     }
 
-    public boolean creerColonie(Noeud a){
-        //A compléter
+    public void creerColonie(Noeud a) throws ConstructionBatimentException, PasAssezDeRessourcesException{
         //Une colonie ne peut être construite sur un croisement que si les trois croisements adjacents ne sont pas occupés par des colonies ou villes
         //La colonie doit être reliée à une route de même couleur
-        if(a.coloniePossible(this) && this.consommerRes(1,1,0,1,1)) {
-            a.changerType(TypeNoeud.COLONIE);
-            this.score += 1;
-            return true;
+        if(a.coloniePossible(this)) {
+            if(this.consommerRes(1,1,0,1,1)) {
+                a.changerType(TypeNoeud.COLONIE);
+                a.setJoueur(this);
+                this.score += 1;
+            }
+            else{
+                throw new PasAssezDeRessourcesException(this.nom + " n'a pas assez de ressources pour construire une colonie");
+            }
         }
         else{
-            return false;
+            throw new ConstructionBatimentException("Interdit de construire une colonie ici");
         }
     }
 
-    public boolean creerVille(Noeud a){
+    public void creerVille(Noeud a) throws ConstructionBatimentException, PasAssezDeRessourcesException{
         //Seules les colonies peuvent être transformées en ville
-        if(a.villePosssible(this) && this.consommerRes(0,0,3,0,2)) {
-            a.changerType(TypeNoeud.VILLE);
-            this.score += 1;
-            return true;
+        if(a.villePosssible(this)) {
+            if(this.consommerRes(0,0,3,0,2)) {
+                a.changerType(TypeNoeud.VILLE);
+                this.score += 1;
+            }
+            else {
+                throw new PasAssezDeRessourcesException(this.nom + " n'a pas assez de ressources pour construire une ville");
+            }
         }
         else{
-            return false;
+            throw new ConstructionBatimentException("Interdit de construire une ville ici");
         }
     }
 

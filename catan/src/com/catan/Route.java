@@ -13,11 +13,16 @@ public class Route {
             this.b = b;
             this.joueur = joueur;
 
-            a.ajouterRoute(this);
-            b.ajouterRoute(this);
+            try {
+                a.ajouterRoute(this);
+                b.ajouterRoute(this);
+            }
+            catch (RouteNonValide e){
+                throw e;
+            }
         }
         else {
-            throw new RouteNonValide();
+            throw new RouteNonValide("Les deux points ne sont pas connectés");
         }
 
     }

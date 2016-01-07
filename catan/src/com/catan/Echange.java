@@ -16,7 +16,7 @@ public class Echange {
             this.joueur = joueur;
         }
         else{
-            throw new PasAssezDeRessourcesException();
+            throw new PasAssezDeRessourcesException(joueur.getNom() + " n'a pas assez de " + pertes);
         }
 
     }
@@ -37,11 +37,11 @@ public class Echange {
 
             }
             else{
-                throw new PasAssezDeRessourcesException();
+                throw new PasAssezDeRessourcesException(client.getNom() + " n'a pas assez de " + gains);
             }
         }
         else{
-            throw new PasAssezDeRessourcesException();
+            throw new PasAssezDeRessourcesException(joueur.getNom() + " n'a pas assez de " + pertes);
         }
     }
 

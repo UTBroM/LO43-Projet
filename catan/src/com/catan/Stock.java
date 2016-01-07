@@ -2,11 +2,15 @@ package com.catan;
 
 public class Stock<T> {
     private int stock;
-    private T type;
+    private final T type;
 
     public Stock(T type){
         this.type = type;
         stock = 0;
+    }
+
+    public T getType() {
+        return type;
     }
 
     public int getStock() {
@@ -21,9 +25,9 @@ public class Stock<T> {
         this.stock += quantite;
     }
 
-    public boolean remove(int quantite){
+    public boolean remove(int quantite) throws PasAssezDeRessourcesException{
         if(quantite > this.stock){
-            return false;
+            throw new PasAssezDeRessourcesException("Pas assez de " + this.type);
         }
         else{
             this.stock -= quantite;
