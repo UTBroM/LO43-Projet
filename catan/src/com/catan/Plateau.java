@@ -140,8 +140,7 @@ public class Plateau {
                 noeuds.get(i-4).ajouterVoisin(noeuds.get(i));
             }
         }
-
-        //TODO : On calcule les voisins de chaque case
+        
         for (int i = 0; i < 19; i++) {
 
             if(i>=0 && i<3){
