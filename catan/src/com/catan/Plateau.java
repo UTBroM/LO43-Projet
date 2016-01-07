@@ -291,5 +291,16 @@ public class Plateau {
 
         return out;
     }
+    
+    public boolean partieTermine(){
+        boolean out = false;
+
+        for (Joueur joueur:joueurs
+             ) {
+            out = joueur.getScore() == 10 || out;
+        }
+
+        return out;
+    }
 
 }
