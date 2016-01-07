@@ -41,11 +41,11 @@ public class Joueur {
                 this.getStockRes(Ressources.LAINE)>=laine &&
                 this.getStockRes(Ressources.CHEESEBURGER)>=cheeseburger){
 
-            this.stockRes.get(0).remove(plutonium);
-            this.stockRes.get(1).remove(metal);
-            this.stockRes.get(2).remove(pierre);
-            this.stockRes.get(3).remove(laine);
-            this.stockRes.get(4).remove(cheeseburger);
+            this.consommerUneRes(Ressources.PLUTONIUM, plutonium);
+            this.consommerUneRes(Ressources.METAL, metal);
+            this.consommerUneRes(Ressources.PIERRE, pierre);
+            this.consommerUneRes(Ressources.LAINE, laine);
+            this.consommerUneRes(Ressources.CHEESEBURGER, cheeseburger);
 
             return true;
 
