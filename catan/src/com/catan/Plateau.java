@@ -7,6 +7,7 @@ public class Plateau {
     private ArrayList<Joueur> joueurs;
     private ArrayList<Case> cases;
     private ArrayList<Noeud> noeuds;
+    private ArrayList<Route> routes;
     private Voleur voleur;
     private ArrayList<Echange> echanges;
     private Des des;
@@ -17,6 +18,7 @@ public class Plateau {
         cases = new ArrayList<>();
         noeuds = new ArrayList<>();
         echanges = new ArrayList<>();
+        routes = new ArrayList<>();
         des = new Des();
 
         this.generer();
@@ -30,34 +32,53 @@ public class Plateau {
         }
 
 
+        //Tests d'attributions et dépenses de ressources
         joueurs.add(new Joueur("test"));
         joueurs.get(0).setStockRes(Ressources.METAL, 10);
         System.out.println("Ressources de metal : " + joueurs.get(0).getStockRes(Ressources.METAL));
-        joueurs.get(0).creerDev();
+        joueurs.get(0).creerDev(); //Ne crée rien car pas assez de ressources
         joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
         joueurs.get(0).setStockRes(Ressources.LAINE, 10);
         joueurs.get(0).setStockRes(Ressources.PIERRE, 10);
-        joueurs.get(0).creerDev();
+        joueurs.get(0).creerDev(); //Ici crée une carte aléatoire
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Lance les dés : " + des.lancer());
         }
 
 
+        //Simulations d'échanges
         joueurs.add(new Joueur("test2"));
         joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
 
         echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
 
-        System.out.println(echanges.get(0).toString());
+        System.out.println(echanges.get(0));
 
         System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
 
         echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
 
-        System.out.println(echanges.get(1).toString());
+        System.out.println(echanges.get(1));
 
         System.out.println("Accepter : " + echanges.get(1).accepter(joueurs.get(1))); //false car pas asser de metal
+
+
+
+        //Crée une colonie sur le noeud 23 et l'attribue au joueur 0
+        noeuds.get(23).changerType(TypeNoeud.COLONIE);
+        noeuds.get(23).setJoueur(joueurs.get(0));
+
+        //Crée une route entre le noeud 23 et 29 et l'attribue au joueur 0
+        routes.add(new Route(noeuds.get(23), noeuds.get(29), joueurs.get(0)));
+
+
+        //Simule 30 tours pour voir si les ressources fonctionnent
+        for (int i = 0; i < 30; i++) {
+            this.debutTour();
+        }
+
+        System.out.println("terminé");
 
 
     }
@@ -223,18 +244,19 @@ public class Plateau {
     public void debutTour(){
 
         final int lancer = des.lancer(); //On lance les dés
-
+        //TODO : activer Biff si on tire un sept
         for (Case curcase:cases
              ) {
-            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition() && curcase.getNumero() == lancer)
-            for (Noeud curnoeud:curcase.getNoeuds()
-                 ) {
-                if(curnoeud.getType() == TypeNoeud.COLONIE){
-                    //On attribue 1 ressource de la case au joueur
-                    curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1); //Fait le parallele entre l'enum Ressource et TypeCase
-                }
-                if(curnoeud.getType() == TypeNoeud.VILLE){
-                    curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1);
+            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition() && curcase.getNumero() == lancer) {
+                for (Noeud curnoeud : curcase.getNoeuds()
+                        ) {
+                    if (curnoeud.getType() == TypeNoeud.COLONIE) {
+                        //On attribue 1 ressource de la case au joueur
+                        curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1); //Fait le parallele entre l'enum Ressource et TypeCase
+                    }
+                    else if (curnoeud.getType() == TypeNoeud.VILLE) {
+                        curnoeud.getJoueur().ajouterUneRes(Ressources.values()[curcase.getType().ordinal()], 1);
+                    }
                 }
             }
         }

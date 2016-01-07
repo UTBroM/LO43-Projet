@@ -9,9 +9,17 @@ public class Route {
     private Joueur joueur;
 
     public Route(Noeud a, Noeud b, Joueur joueur) {
-        this.a = a;
-        this.b = b;
-        this.joueur = joueur;
+        //Vérifie si les deux points sont voisins
+        //TODO : lancer une exception si ça échoue
+        if(a.estVoisin(b)){
+            this.a = a;
+            this.b = b;
+            this.joueur = joueur;
+
+            a.ajouterRoute(this);
+            b.ajouterRoute(this);
+        }
+
     }
 
     public Joueur getJoueur() {

@@ -29,11 +29,31 @@ public class Noeud {
 
     public boolean ajouterRoute(Route route){
 
-        return false;
+        if(route.getNoeuds()[0] == this || route.getNoeuds()[1] == this){
+            routes.add(route);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void ajouterVoisin(Noeud voisin){
         voisins.add(voisin);
     }
 
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
+
+    public boolean estVoisin(Noeud testNoeud){
+        for (Noeud voisin:voisins
+             ) {
+            if(voisin == testNoeud){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
