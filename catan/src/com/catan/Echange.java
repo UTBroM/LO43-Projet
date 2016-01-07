@@ -42,6 +42,7 @@ public class Echange {
         }
     }
 
+    @Override
     public String toString(){
         return "Le joueur " + joueur.getNom() + " souhaite échanger " + quantitePertes + " de " + pertes + " contre " + quantiteGains + " de " + gains;
     }
