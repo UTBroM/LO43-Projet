@@ -78,6 +78,19 @@ public class Plateau {
             this.debutTour();
         }
 
+        //Test d'achat d'une route puis d'une colonie
+        //On vérifie d'abord le respect des règles reliée à une route, une colonie ou
+        //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route
+        //Ceci est fait par la methode connectable de Noeud
+
+        routes.add(joueurs.get(0).creerRoute(noeuds.get(29), noeuds.get(34)));
+
+
+        //De la même manière on construit une colonie au bout de cette route
+        joueurs.get(0).creerColonie(noeuds.get(34));
+
+        joueurs.get(0).creerVille(noeuds.get(34));
+
         System.out.println("terminé");
 
 

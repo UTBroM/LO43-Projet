@@ -102,19 +102,23 @@ public class Joueur {
         //Vérifier si la routre est construisible (reliée à une route, une colonie ou
         //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route)
         //À compléter avec la classe Noeud qui pourrais checker tout ça
-        if(this.consommerRes(1,1,0,0,0)){
+        //TODO : utiliser les exception pour ne pas créer de route si problème
+
+        if((a.connectable(this, b) || b.connectable(this, a)) && this.consommerRes(1,1,0,0,0)){
             return new Route(a,b,this);
         }
         else{
             return null;
         }
+
     }
 
     public boolean creerColonie(Noeud a){
         //A compléter
         //Une colonie ne peut être construite sur un croisement que si les trois croisements adjacents ne sont pas occupés par des colonies ou villes
         //La colonie doit être reliée à une route de même couleur
-        if(this.consommerRes(1,1,0,1,1)) {
+        if(a.coloniePossible(this) && this.consommerRes(1,1,0,1,1)) {
+            a.changerType(TypeNoeud.COLONIE);
             this.score += 1;
             return true;
         }
@@ -125,7 +129,8 @@ public class Joueur {
 
     public boolean creerVille(Noeud a){
         //Seules les colonies peuvent être transformées en ville
-        if(this.consommerRes(0,0,3,0,2)) {
+        if(a.villePosssible(this) && this.consommerRes(0,0,3,0,2)) {
+            a.changerType(TypeNoeud.VILLE);
             this.score += 1;
             return true;
         }
