@@ -65,12 +65,7 @@ public class Noeud {
             bonneRouteConnecte = route.getJoueur() == joueur || bonneRouteConnecte; //Vérifie qu'au moins une route est de la bonne couleur
             unique = !(route.getNoeuds()[0] == destination || route.getNoeuds()[1] == destination) && unique; //Vérifie que la route n'est pas en double
         }
-        if ((this.joueur == joueur || bonneRouteConnecte) && unique){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return (this.joueur == joueur || bonneRouteConnecte) && unique;
     }
 
     public boolean coloniePossible(Joueur joueur){
