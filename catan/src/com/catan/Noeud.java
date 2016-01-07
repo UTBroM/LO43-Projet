@@ -10,8 +10,8 @@ public class Noeud {
 
     public Noeud(){
         this.type = TypeNoeud.VIDE;
-        routes = new ArrayList<Route>();
-        voisins = new ArrayList<Noeud>();
+        routes = new ArrayList<>();
+        voisins = new ArrayList<>();
         joueur = null;
     }
 

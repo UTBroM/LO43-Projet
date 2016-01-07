@@ -5,7 +5,7 @@ import java.util.Random;
 public class Des {
     //Classe qui simule un jet de deux dés
     private int valeur; //Pour garder la valeur du dernier lancer
-    Random aleaNum;
+    private final Random aleaNum;
 
     public Des(){
         aleaNum = new Random();

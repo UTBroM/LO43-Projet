@@ -3,8 +3,8 @@ package com.catan;
 import java.util.ArrayList;
 
 public class Case {
-    private TypeCase type;
-    private ArrayList<Noeud> noeuds;
+    private final TypeCase type;
+    private final ArrayList<Noeud> noeuds;
     private int numero;
 
     public Case(TypeCase type) {

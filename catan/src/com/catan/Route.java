@@ -1,8 +1,6 @@
 package com.catan;
 
 
-import java.util.ArrayList;
-
 public class Route {
     private Noeud a;
     private Noeud b;
@@ -27,8 +25,7 @@ public class Route {
     }
 
     public Noeud[] getNoeuds(){
-        Noeud[] liste = {a, b};
-        return liste;
+        return new Noeud[]{a, b};
     }
 
 }

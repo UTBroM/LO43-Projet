@@ -32,80 +32,9 @@ public class Plateau {
         }
 
 
-        //Tests d'attributions et dépenses de ressources
-        joueurs.add(new Joueur("test"));
-        joueurs.get(0).setStockRes(Ressources.METAL, 10);
-        System.out.println("Ressources de metal : " + joueurs.get(0).getStockRes(Ressources.METAL));
-        joueurs.get(0).creerDev(); //Ne crée rien car pas assez de ressources
-        joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
-        joueurs.get(0).setStockRes(Ressources.LAINE, 10);
-        joueurs.get(0).setStockRes(Ressources.PIERRE, 10);
-        joueurs.get(0).creerDev(); //Ici crée une carte aléatoire
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Lance les dés : " + des.lancer());
-        }
-
-
-        //Simulations d'échanges
-        joueurs.add(new Joueur("test2"));
-        joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
-
-        try {
-            echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
-            echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
-        }
-        catch (PasAssezDeRessourcesException e){
-            System.out.println("Erreur " + e);
-        }
-
-        System.out.println(afficherOffres());
-
-        System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
-        echanges.remove(0);
-
-        System.out.println(afficherOffres());
-
-
-        //Ne fonctionne plus car grace à l'exception on ne crée pas l'objet erroné
-        //System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //false car pas asser de metal
-        //echanges.remove(0);
-
-
-        //Crée une colonie sur le noeud 23 et l'attribue au joueur 0
-        noeuds.get(23).changerType(TypeNoeud.COLONIE);
-        noeuds.get(23).setJoueur(joueurs.get(0));
-
-        //Crée une route entre le noeud 23 et 29 et l'attribue au joueur 0
-        routes.add(new Route(noeuds.get(23), noeuds.get(29), joueurs.get(0)));
-
-
-        //Simule 30 tours pour voir si les ressources fonctionnent
-        for (int i = 0; i < 30; i++) {
-            this.debutTour();
-        }
-
-        //Test d'achat d'une route puis d'une colonie
-        //On vérifie d'abord le respect des règles reliée à une route, une colonie ou
-        //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route
-        //Ceci est fait par la methode connectable de Noeud
-
-        routes.add(joueurs.get(0).creerRoute(noeuds.get(29), noeuds.get(34)));
-
-
-        //De la même manière on construit une colonie au bout de cette route
-        joueurs.get(0).creerColonie(noeuds.get(34));
-
-        joueurs.get(0).creerVille(noeuds.get(34));
-
-
-
-        System.out.println("terminé");
-
-
     }
 
-    public void generer(){
+    private void generer(){
         //generation des noeuds
         for (int i = 0; i < 54; i++) {
             noeuds.add(new Noeud());
@@ -263,7 +192,7 @@ public class Plateau {
         System.out.println("Généré !");
     }
 
-    public void debutTour(){
+    private void debutTour(){
 
         final int lancer = des.lancer(); //On lance les dés
         //TODO : activer Biff si on tire un sept
@@ -284,7 +213,7 @@ public class Plateau {
         }
     }
 
-    public String afficherOffres(){
+    private String afficherOffres(){
         String out = "";
         for (Echange echange:echanges
              ) {
@@ -303,6 +232,73 @@ public class Plateau {
         }
 
         return out;
+    }
+
+    public void partieTest(){
+        //Tests d'attributions et dépenses de ressources
+        joueurs.add(new Joueur("test"));
+        joueurs.get(0).setStockRes(Ressources.METAL, 10);
+        System.out.println("Ressources de metal : " + joueurs.get(0).getStockRes(Ressources.METAL));
+        joueurs.get(0).creerDev(); //Ne crée rien car pas assez de ressources
+        joueurs.get(0).setStockRes(Ressources.CHEESEBURGER, 10);
+        joueurs.get(0).setStockRes(Ressources.LAINE, 10);
+        joueurs.get(0).setStockRes(Ressources.PIERRE, 10);
+        joueurs.get(0).creerDev(); //Ici crée une carte aléatoire
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Lance les dés : " + des.lancer());
+        }
+
+
+        //Simulations d'échanges
+        joueurs.add(new Joueur("test2"));
+        joueurs.get(1).setStockRes(Ressources.CHEESEBURGER, 10);
+
+        try {
+            echanges.add(new Echange(Ressources.CHEESEBURGER, 1, Ressources.METAL, 1, joueurs.get(0)));
+            echanges.add(new Echange(Ressources.CHEESEBURGER, 3, Ressources.METAL, 20, joueurs.get(0)));
+        }
+        catch (PasAssezDeRessourcesException e){
+            System.out.println("Erreur " + e);
+        }
+
+        System.out.println(afficherOffres());
+
+        System.out.println("Accepter : " + echanges.get(0).accepter(joueurs.get(1))); //true car tout le monde à asser
+        echanges.remove(0);
+
+        System.out.println(afficherOffres());
+
+
+        //Crée une colonie sur le noeud 23 et l'attribue au joueur 0
+        noeuds.get(23).changerType(TypeNoeud.COLONIE);
+        noeuds.get(23).setJoueur(joueurs.get(0));
+
+        //Crée une route entre le noeud 23 et 29 et l'attribue au joueur 0
+        routes.add(new Route(noeuds.get(23), noeuds.get(29), joueurs.get(0)));
+
+
+        //Simule 30 tours pour voir si les ressources fonctionnent
+        for (int i = 0; i < 30; i++) {
+            this.debutTour();
+        }
+
+        //Test d'achat d'une route puis d'une colonie
+        //On vérifie d'abord le respect des règles reliée à une route, une colonie ou
+        //une ville de même couleur et chaque coté d'hexagone ne peut contenir qu'une seule route
+        //Ceci est fait par la methode connectable de Noeud
+
+        routes.add(joueurs.get(0).creerRoute(noeuds.get(29), noeuds.get(34)));
+
+
+        //De la même manière on construit une colonie au bout de cette route
+        joueurs.get(0).creerColonie(noeuds.get(34));
+
+        joueurs.get(0).creerVille(noeuds.get(34));
+
+
+
+        System.out.println("terminé");
     }
 
 }

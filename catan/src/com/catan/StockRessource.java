@@ -8,7 +8,4 @@ public class StockRessource extends Stock{
         this.type = type;
     }
 
-    public Ressources getType() {
-        return type;
-    }
 }

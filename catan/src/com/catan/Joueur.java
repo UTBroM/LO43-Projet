@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Joueur {
-    private String nom;
+    private final String nom;
     private final ArrayList<StockRessource> stockRes;
     private final ArrayList<StockDev> stockDev;
     private int score;
 
     public Joueur(String nom){
 
-        stockRes = new ArrayList<StockRessource>();
+        stockRes = new ArrayList<>();
         for (Ressources type:Ressources.values()
              ) {
             stockRes.add(new StockRessource(type));
         }
 
-        stockDev = new ArrayList<StockDev>();
+        stockDev = new ArrayList<>();
         for (Developpement type:Developpement.values()
                 ) {
             stockDev.add(new StockDev(type));
