@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Joueur {
     private final String nom;
-    private final ArrayList<StockRessource> stockRes;
-    private final ArrayList<StockDev> stockDev;
+    private final ArrayList<Stock<Ressources>> stockRes;
+    private final ArrayList<Stock<Developpement>> stockDev;
     private int score;
 
     public Joueur(String nom){
@@ -14,13 +14,13 @@ public class Joueur {
         stockRes = new ArrayList<>();
         for (Ressources type:Ressources.values()
              ) {
-            stockRes.add(new StockRessource(type));
+            stockRes.add(new Stock<Ressources>(type));
         }
 
         stockDev = new ArrayList<>();
         for (Developpement type:Developpement.values()
                 ) {
-            stockDev.add(new StockDev(type));
+            stockDev.add(new Stock<Developpement>(type));
         }
         score = 0;
         this.nom = nom;

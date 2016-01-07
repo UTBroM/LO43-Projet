@@ -1,10 +1,11 @@
 package com.catan;
 
-public class Stock {
-    //TODO : utilisation de generics pour avoir une seule classe de stock
+public class Stock<T> {
     private int stock;
+    private T type;
 
-    public Stock(){
+    public Stock(T type){
+        this.type = type;
         stock = 0;
     }
 
