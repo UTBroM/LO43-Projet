@@ -14,7 +14,7 @@ public class Joueur {
         stockRes = new ArrayList<>();
         for (Ressources type:Ressources.values()
              ) {
-            stockRes.add(new Stock<>(type));
+            stockRes.add(new Stock<>(type)); //Initialisation des Stocks du joueur
         }
 
         stockDev = new ArrayList<>();
@@ -35,6 +35,8 @@ public class Joueur {
     }
     
     public boolean consommerRes(int plutonium, int metal, int pierre, int laine, int cheeseburger){
+        //Avant de consommer les ressource il faut vérifier qu'elles sont toutes disponibles
+        //Les exceptions ne sont pas utilisées ici car on a besoin d'un booléen
         if(this.getStockRes(Ressources.PLUTONIUM)>=plutonium &&
                 this.getStockRes(Ressources.METAL)>=metal &&
                 this.getStockRes(Ressources.PIERRE)>=pierre &&
@@ -48,7 +50,7 @@ public class Joueur {
                 this.consommerUneRes(Ressources.LAINE, laine);
                 this.consommerUneRes(Ressources.CHEESEBURGER, cheeseburger);
             } catch (PasAssezDeRessourcesException e) {
-                System.out.println("Erreur " + e);
+                System.out.println("Erreur " + e); //Cette erreur ne devrais pas survenir car les ressources sont vérifiées avant mais Java nous oblige à mettre un try catch
                 return false;
             }
 
@@ -107,6 +109,7 @@ public class Joueur {
     }
 
     public Route creerRoute(Noeud a, Noeud b) throws RouteNonValide{
+        //Vérifie si l'un des deux noeud est valide et si les ressources sont disponible (Normalement si aucun noeud n'est valide il ne devrais pas évaluer l'expression à droite de &&)
         if((a.connectable(this, b) || b.connectable(this, a)) && this.consommerRes(1,1,0,0,0)){
             try {
                 return new Route(a,b,this);
