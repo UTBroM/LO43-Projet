@@ -81,11 +81,7 @@ public class Joueur {
     }
 
     public boolean useDev(Developpement type) throws PasAssezDeRessourcesException{
-        try {
-            return stockDev.get(type.ordinal()).remove(1);
-        } catch (PasAssezDeRessourcesException e) {
-            throw e;
-        }
+        return stockDev.get(type.ordinal()).remove(1);
     }
 
     public void creerDev(){
