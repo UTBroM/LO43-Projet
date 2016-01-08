@@ -1,9 +1,9 @@
 package com.catan;
 
-public class Voleur {
+public class Biff {
     private Case position;
 
-    public Voleur(Case position) {
+    public Biff(Case position) {
         this.position = position;
     }
 

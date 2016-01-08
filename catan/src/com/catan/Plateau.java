@@ -8,7 +8,7 @@ public class Plateau {
     private ArrayList<Case> cases;
     private ArrayList<Noeud> noeuds;
     private ArrayList<Route> routes;
-    private Voleur voleur;
+    private Biff biff;
     private ArrayList<Echange> echanges;
     private Des des;
 
@@ -23,11 +23,11 @@ public class Plateau {
 
         this.generer();
 
-        //Le voleur est placé sur la case désert
+        //Biff est placé sur la case désert
         for (Case curcase:cases
              ) {
             if(curcase.getType() == TypeCase.DESERT){
-                voleur = new Voleur(curcase);
+                biff = new Biff(curcase);
             }
         }
 
@@ -196,7 +196,7 @@ public class Plateau {
         final int lancer = des.lancer(); //On lance les dés
         for (Case curcase:cases
              ) {
-            if(curcase.getType() != TypeCase.DESERT && curcase != voleur.getPosition() && curcase.getNumero() == lancer) {
+            if(curcase.getType() != TypeCase.DESERT && curcase != biff.getPosition() && curcase.getNumero() == lancer) {
                 for (Noeud curnoeud : curcase.getNoeuds()
                         ) {
                     if (curnoeud.getType() == TypeNoeud.COLONIE) {
