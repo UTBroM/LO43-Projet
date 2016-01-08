@@ -320,6 +320,7 @@ public class Plateau {
             System.out.println("Erreur " + e);
         }
 
+        //Puis une ville
         try {
             joueurs.get(0).creerVille(noeuds.get(34));
         } catch (ConstructionBatimentException | PasAssezDeRessourcesException e) {
