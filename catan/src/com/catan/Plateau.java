@@ -316,17 +316,13 @@ public class Plateau {
         //De la même manière on construit une colonie au bout de cette route
         try {
             joueurs.get(0).creerColonie(noeuds.get(34));
-        } catch (ConstructionBatimentException e) {
-            System.out.println("Erreur " + e);
-        } catch (PasAssezDeRessourcesException e) {
+        } catch (ConstructionBatimentException | PasAssezDeRessourcesException e) {
             System.out.println("Erreur " + e);
         }
 
         try {
             joueurs.get(0).creerVille(noeuds.get(34));
-        } catch (ConstructionBatimentException e) {
-            System.out.println("Erreur " + e);
-        } catch (PasAssezDeRessourcesException e) {
+        } catch (ConstructionBatimentException | PasAssezDeRessourcesException e) {
             System.out.println("Erreur " + e);
         }
 
