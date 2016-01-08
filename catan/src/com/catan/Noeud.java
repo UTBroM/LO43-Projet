@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Noeud {
     private TypeNoeud type;
-    private ArrayList<Route> routes;
+    private final ArrayList<Route> routes;
     private final ArrayList<Noeud> voisins;
     private Joueur joueur;
 

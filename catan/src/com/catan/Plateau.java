@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Plateau {
-    private ArrayList<Joueur> joueurs;
-    private ArrayList<Case> cases;
-    private ArrayList<Noeud> noeuds;
-    private ArrayList<Route> routes;
+    private final ArrayList<Joueur> joueurs;
+    private final ArrayList<Case> cases;
+    private final ArrayList<Noeud> noeuds;
+    private final ArrayList<Route> routes;
     private Biff biff;
-    private ArrayList<Echange> echanges;
-    private Des des;
+    private final ArrayList<Echange> echanges;
+    private final Des des;
 
     public Plateau(){
 
